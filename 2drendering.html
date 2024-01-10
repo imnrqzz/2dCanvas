@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapes Drawing</title>
+    <style>
+        body {
+            background-color: #ceedce;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        canvas {
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-transform: uppercase;
+            background-color: #ead9fe;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        h2:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-container">
+    <div class="shape-container">
+        <h2>Square</h2>
+        <canvas id="square" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Rectangle</h2>
+        <canvas id="rectangle" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Circle</h2>
+        <canvas id="circle" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Triangle</h2>
+        <canvas id="triangle" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Heart</h2>
+        <canvas id="heartCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Pentagon</h2>
+        <canvas id="pentagonCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Star</h2>
+        <canvas id="starCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Oval</h2>
+        <canvas id="ovalCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Heptagon</h2>
+        <canvas id="heptagonCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Octagon</h2>
+        <canvas id="octagonCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Parallelogram</h2>
+        <canvas id="parallelogramCanvas" width="100" height="100"></canvas>
+    </div>
+
+    <div class="shape-container">
+        <h2>Nonagon</h2>
+        <canvas id="nonagonCanvas" width="100" height="100"></canvas>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // ... existing shape drawings ...
+
+        // Example for Square
+        var squareCanvas = document.getElementById('square').getContext('2d');
+        squareCanvas.fillStyle = '#e5d0e3';
+        squareCanvas.fillRect(0, 0, 100, 100);
+
+        // Example for Rectangle
+        var rectangleCanvas = document.getElementById('rectangle').getContext('2d');
+        rectangleCanvas.fillStyle = '#fcd8e8';
+        rectangleCanvas.fillRect(0, 0, 100, 50);
+
+        // Example for Circle
+        var circleCanvas = document.getElementById('circle').getContext('2d');
+        circleCanvas.fillStyle = '#f1f7b5';
+        circleCanvas.beginPath();
+        circleCanvas.arc(50, 50, 50, 0, 2 * Math.PI);
+        circleCanvas.fill();
+
+        // Example for Triangle
+        var triangleCanvas = document.getElementById('triangle').getContext('2d');
+        triangleCanvas.fillStyle = 'lavender';
+        triangleCanvas.beginPath();
+        triangleCanvas.moveTo(50, 0);
+        triangleCanvas.lineTo(0, 100);
+        triangleCanvas.lineTo(100, 100);
+        triangleCanvas.closePath();
+        triangleCanvas.fill();
+        triangleCanvas.strokeStyle = 'black';
+        triangleCanvas.lineWidth = 3;
+        triangleCanvas.stroke();
+
+        // Example for Heart
+        var heartCanvas = document.getElementById('heartCanvas').getContext('2d');
+        heartCanvas.fillStyle = 'lavender';
+        heartCanvas.beginPath();
+        heartCanvas.moveTo(50, 40);
+        heartCanvas.bezierCurveTo(50, 37, 45, 25, 25, 25);
+        heartCanvas.bezierCurveTo(0, 25, 0, 62.5, 0, 62.5);
+        heartCanvas.bezierCurveTo(0, 80, 20, 102, 50, 120);
+        heartCanvas.bezierCurveTo(80, 102, 100, 80, 100, 62.5);
+        heartCanvas.bezierCurveTo(100, 62.5, 100, 25, 75, 25);
+        heartCanvas.bezierCurveTo(60, 25, 50, 37, 50, 40);
+        heartCanvas.fill();
+
+        // Example for Pentagon
+        var pentagonCanvas = document.getElementById('pentagonCanvas').getContext('2d');
+        pentagonCanvas.fillStyle = '#cfeef1';
+        var x = 50;
+        var y = 50;
+        var radius = 40;
+        var sides = 5;
+        var startAngle = 0;
+        var endAngle = 2 * Math.PI;
+        pentagonCanvas.moveTo(x + radius * Math.cos(startAngle), y + radius * Math.sin(startAngle));
+        for (var i = 0; i < sides; i++) {
+            pentagonCanvas.lineTo(x + radius * Math.cos(startAngle + (i + 1) * endAngle / sides), y + radius * Math.sin(startAngle + (i + 1) * endAngle / sides));
+        }
+        pentagonCanvas.closePath();
+        pentagonCanvas.fill();
+        pentagonCanvas.strokeStyle = 'black';
+        pentagonCanvas.lineWidth = 3;
+        pentagonCanvas.stroke();
+
+        // Example for Star
+        var starCanvas = document.getElementById('starCanvas').getContext('2d');
+        drawStar(starCanvas, 50, 50, 30, 5, '#ffd700');
+
+        // Example for Oval
+        var ovalCanvas = document.getElementById('ovalCanvas').getContext('2d');
+        ovalCanvas.fillStyle = '#fdd0a2';
+        ovalCanvas.beginPath();
+        ovalCanvas.ellipse(50, 50, 40, 70, 0, 0, 2 * Math.PI);
+        ovalCanvas.fill();
+
+        // Example for Heptagon
+        var heptagonCanvas = document.getElementById('heptagonCanvas').getContext('2d');
+        heptagonCanvas.fillStyle = '#f7d1d1';
+        var heptagonX = 50;
+        var heptagonY = 50;
+        var heptagonRadius = 40;
+        var heptagonSides = 7;
+        var heptagonStartAngle = 0;
+        var heptagonEndAngle = 2 * Math.PI;
+        heptagonCanvas.moveTo(heptagonX + heptagonRadius * Math.cos(heptagonStartAngle), heptagonY + heptagonRadius * Math.sin(heptagonStartAngle));
+        for (var i = 0; i < heptagonSides; i++) {
+            heptagonCanvas.lineTo(heptagonX + heptagonRadius * Math.cos(heptagonStartAngle + (i + 1) * heptagonEndAngle / heptagonSides), heptagonY + heptagonRadius * Math.sin(heptagonStartAngle + (i + 1) * heptagonEndAngle / heptagonSides));
+        }
+        heptagonCanvas.closePath();
+        heptagonCanvas.fill();
+        heptagonCanvas.strokeStyle = 'black';
+        heptagonCanvas.lineWidth = 3;
+        heptagonCanvas.stroke();
+
+        // Example for Octagon
+        var octagonCanvas = document.getElementById('octagonCanvas').getContext('2d');
+        octagonCanvas.fillStyle = '#e2d8f0';
+        var octagonX = 50;
+        var octagonY = 50;
+        var octagonRadius = 40;
+        var octagonSides = 8;
+        var octagonStartAngle = 0;
+        var octagonEndAngle = 2 * Math.PI;
+        octagonCanvas.moveTo(octagonX + octagonRadius * Math.cos(octagonStartAngle), octagonY + octagonRadius * Math.sin(octagonStartAngle));
+        for (var i = 0; i < octagonSides; i++) {
+            octagonCanvas.lineTo(octagonX + octagonRadius * Math.cos(octagonStartAngle + (i + 1) * octagonEndAngle / octagonSides), octagonY + octagonRadius * Math.sin(octagonStartAngle + (i + 1) * octagonEndAngle / octagonSides));
+        }
+        octagonCanvas.closePath();
+        octagonCanvas.fill();
+        octagonCanvas.strokeStyle = 'black';
+        octagonCanvas.lineWidth = 3;
+        octagonCanvas.stroke();
+
+        // Example for Parallelogram
+        var parallelogramCanvas = document.getElementById('parallelogramCanvas').getContext('2d');
+        parallelogramCanvas.fillStyle = '#c8e1ff';
+        parallelogramCanvas.beginPath();
+        parallelogramCanvas.moveTo(20, 0);
+        parallelogramCanvas.lineTo(100, 0);
+        parallelogramCanvas.lineTo(80, 100);
+        parallelogramCanvas.lineTo(0, 100);
+        parallelogramCanvas.closePath();
+        parallelogramCanvas.fill();
+        parallelogramCanvas.strokeStyle = 'black';
+        parallelogramCanvas.lineWidth = 3;
+        parallelogramCanvas.stroke();
+
+        // Example for Nonagon
+        var nonagonCanvas = document.getElementById('nonagonCanvas').getContext('2d');
+        nonagonCanvas.fillStyle = '#f7d1f7';
+        var nonagonX = 50;
+        var nonagonY = 50;
+        var nonagonRadius = 40;
+        var nonagonSides = 9;
+        var nonagonStartAngle = 0;
+        var nonagonEndAngle = 2 * Math.PI;
+        nonagonCanvas.moveTo(nonagonX + nonagonRadius * Math.cos(nonagonStartAngle), nonagonY + nonagonRadius * Math.sin(nonagonStartAngle));
+        for (var i = 0; i < nonagonSides; i++) {
+            nonagonCanvas.lineTo(nonagonX + nonagonRadius * Math.cos(nonagonStartAngle + (i + 1) * nonagonEndAngle / nonagonSides), nonagonY + nonagonRadius * Math.sin(nonagonStartAngle + (i + 1) * nonagonEndAngle / nonagonSides));
+        }
+        nonagonCanvas.closePath();
+        nonagonCanvas.fill();
+        nonagonCanvas.strokeStyle = 'black';
+        nonagonCanvas.lineWidth = 3;
+        nonagonCanvas.stroke();
+    });
+
+    function drawStar(ctx, x, y, radius, sides, fillColor) {
+        var points = sides || 5;
+        ctx.fillStyle = fillColor;
+
+        ctx.beginPath();
+        ctx.moveTo(x, y + radius);
+        for (var i = 0; i < 2 * points + 1; i++) {
+            var r = (i % 2 == 0) ? radius : radius / 2;
+            var a = Math.PI * i / points;
+            ctx.lineTo(x + r * Math.sin(a), y + r * Math.cos(a));
+        }
+        ctx.closePath();
+
+        if (fillColor)
+            ctx.fill();
+    }
+</script>
+
+</body>
+</html>
